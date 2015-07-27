@@ -1,0 +1,1 @@
+<view template="testboard:/templates/style.tmpl" isVisible="true"><label>style</label></view>

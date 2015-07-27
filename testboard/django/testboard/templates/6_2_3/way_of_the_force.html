@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>App Way Of The Force</title>
+    <link rel="shortcut icon" href="{{SPLUNKWEB_URL_PREFIX}}/static/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/pages/dashboard-simple-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/app/search/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/custom.css" />
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/config?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/i18n.js"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/i18ncatalog?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/build/simplexml.min/config.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_javascript.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_splunk.js"></script>
+    <!--[if IE 7]><link rel="stylesheet" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/sprites-ie7.css" /><![endif]-->
+</head>
+<body class="simplexml preload">
+
+<!-- 
+BEGIN LAYOUT
+This section contains the layout for the dashboard. Splunk uses proprietary
+styles in <div> tags, similar to Bootstrap's grid system. 
+-->
+<a class="navSkip" href="#navSkip" tabindex="1">Screen reader users, click here to skip the navigation bar</a>
+<div class="header">
+    <div id="placeholder-splunk-bar">
+        <a href="{{SPLUNKWEB_URL_PREFIX}}/app/launcher/home" class="brand" title="splunk > listen to your data">Call 1-800-dth-star to destroy that annoying planet in your life, like Alderaan!</a>
+    </div>
+    <div id="placeholder-app-bar"></div>
+</div>
+<a id="navSkip"></a>
+    <div class="dashboard-body">
+        <div id="main" class="main-area">
+            <h1 align="center">Way Of The Force</h1>
+            <div id="content">
+                <h2 id="content_index">Content</h2>
+                <p>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#preasset">Pre-Assets</a></li>
+                    <li><a href="#gettingstarted">Getting Started</a></li>
+                    <li id="testAct"><img id="imgswitch1" onclick="listChange('sublist1', 'imgswitch1')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> Pages
+                        <ul id="sublist1" style="display: none">
+                            <li><a onclick="switchPage('way_of_the_force_1', 'way_of_the_force')">Step 1: The Padawan</a></li>
+                            <li><a onclick="switchPage('way_of_the_force_2', 'way_of_the_force')">Step 2: Early Training</a></li>
+                            <li><a onclick="switchPage('way_of_the_force_3', 'way_of_the_force')">Step 3: To Be A Jedi</a></li>
+                            <li><a onclick="switchPage('way_of_the_force_4', 'way_of_the_force')">Step 4: Road To Jedi Knight</a></li>
+                            <li><a onclick="switchPage('way_of_the_force_5', 'way_of_the_force')">Step 5: Acceptence</a></li>
+                            <li><a onclick="switchPage('way_of_the_force_6', 'way_of_the_force')">Step 6: The Concil</a></li>
+                        </ul>
+                    </li>
+                </p>
+                <h2 id="overview">Overview</h2>
+                <p>Welcome to the Way Of The Force, Splunk app develpoment and reference guide. We will be going over the Way Of The Force style for setting up an app in Splunk.</p>
+                <h2 id="preasset">Pre-Assets</h2>
+                <p>
+                    <li>Terminal</li>
+                </p>
+                <h2 id="gettingstarted">Getting Started</h2>
+                <p>You will begin your journey on the next page.</p>
+                <li><a onclick="switchPage('way_of_the_force_1', 'way_of_the_force')">Step 1: The Padawan</a></li>
+            </div>
+        <div class="bottom"></div>
+    </div>
+</div>
+<div class="footer"></div>
+</body>
+</html>

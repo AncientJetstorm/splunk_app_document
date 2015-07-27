@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>App Early Training</title>
+    <link rel="shortcut icon" href="{{SPLUNKWEB_URL_PREFIX}}/static/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/pages/dashboard-simple-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/app/search/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/custom.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/override.css" />
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/config?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/i18n.js"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/i18ncatalog?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/build/simplexml.min/config.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_javascript.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_splunk.js"></script>
+    <!--[if IE 7]><link rel="stylesheet" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/sprites-ie7.css" /><![endif]-->
+</head>
+<body class="simplexml preload">
+
+<!-- 
+BEGIN LAYOUT
+This section contains the layout for the dashboard. Splunk uses proprietary
+styles in <div> tags, similar to Bootstrap's grid system. 
+-->
+<a class="navSkip" href="#navSkip" tabindex="1">Screen reader users, click here to skip the navigation bar</a>
+<div class="header">
+    <div id="placeholder-splunk-bar">
+        <a href="{{SPLUNKWEB_URL_PREFIX}}/app/launcher/home" class="brand" title="splunk > listen to your data">Bounty Hunter wanted</a>
+    </div>
+    <div id="placeholder-app-bar"></div>
+</div>
+<a id="navSkip"></a>
+    <div class="dashboard-body">
+        <div id="main" class="main-area">
+            <h1 align="center">Step 2: Early Training</h1>
+            <div id="content">
+                <h2 id="content_index">Content</h2>
+                <p>
+                    <li><a href="#overview">Going Home</a></li>
+                    <li><a href="#learnyoumust">Learn, You Must</a></li>
+                    <li><a href="#next">Next Step</a></li>
+                </p>
+                <h2 id="overview">Going Home</h2>
+                <p>Let's start setting up the homepage of your app, open up the <b>default.xml</b> file under the <b>$SPLUNK_HOME/etc/apps/app_name/default/data/ui/nav/</b> folder.<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/default_xml.png"><br>
+                    <br>
+                    The <b>default.xml</b> file helps set your homepage and change the default Splunk search view. You can set your homepage to be the default Splunk search view, by adding <code>search_view="search"</code> as an attribute to the <code>&#60;nav&#62;</code> tag. Then add <code>&#60;view name="search" default="true" &#47;&#62;</code> on the next line and remove the <code>default="true"</code> from the <code>&#60;view name="default" default="true"&#47;&#62;</code> line.<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/new_default_xml.png"><br>
+                    <br>
+                    Now restart Splunk and go to your app, it should now look like this:<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/search_home.png"><br>
+                    <br>
+                    The nav bar is grey/gray by default, so before we change our <b>default.xml</b> file back to normal, let's change the color/colour, this will change the color/colour of the nav bar and the color/colour of your app on the Splunk application homepage. Let's change it to a soft red for now, you can change it to the color/colour you prefer, add <code>color="#AA3939"</code> as an attribute to the <code>&#60;nav search_view="search"&#62;</code> tag and restart Splunk.<br>You should see the nav bar is now your color/colour, for this though we won't be needing this, so let's revert all the changes in our <b>default.xml</b> file.<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/final_default_xml.png"><br>
+                    <br>
+                    Note: I left the <code>color="AA3939"</code> attribute, it is your choice to leave it or not.<br>
+                    <br>
+                    Let's head back to the <b>home.html</b> file in the <b>$SPLUNK_HOME/etc/apps/app_name/django/app_name/templates/</b> folder. Let's remove the code that's between the two <code>&#60;p&#62;</code> tags in the <b>&#123;&#37; block content &#37;&#125;</b>, now we have a blank page with a box. In your <b>&#123;&#37; block css &#37;&#125;</b> replace everything between the <code>&#60;style&#62;</code> tags, or in your <b>custom.css</b> file, with this:<br>
+                    
+                    <div class="code">.main-area &#123;<br>
+                        <div id="codetab">background-color: white;<br></div>
+                        <div id="codetab">width: 1100px;<br></div>
+                        <div id="codetab">height: 800px;<br></div>
+                        <div id="codetab">border-width: 1px;<br></div>
+                        <div id="codetab">margin: 10px auto;<br></div>
+                        <div id="codetab">padding: 30px;<br></div>
+                        &#125;</div><br>
+                        This will give you a CSS class that defines the main body, but before we actually talk more about them, let's change the <b>&#123;&#37; block content &#37;&#125;</b> area, replace everything in it with this:<br>
+
+                    <br><div class="code">&#60;div&#62;<br>
+                            <div id="codetab">&#60;div class="main-area"&#62;<br></div>
+                                <div id="codetab2">&#60;table width="100&#37;"&#62;<br></div>
+                                    <div id="codetab3">&#60;tr&#62;<br></div>
+                                       <div id="codetab4">&#60;td width="50&#37;" align="center"&#62;<br></div>
+                                            <div id="codetab5">&#60;!--Pie chart showing top artists--&#62;<br></div>
+                                            <div id="codetab5">&#123;&#37; chart id="artist_pie_chart" managerid="artist_chart" type="pie" drilldown="none" &#37;&#125;<br></div>
+                                            <div id="codetab5">&#60;br&#62;<br></div>
+                                            <div id="codetab5">&#60;!--Dropdown bar defining number of artists to get--&#62;<br></div>
+                                            <div id="codetab5">&#123;&#37; dropdown id="drop_artistcount" default="8" value="$artistcount$"|token_safe showClearButton=False &#37;&#125;<br></div>
+                                        <div id="codetab4">&#60;/td&#62;<br></div>
+                                        <div id="codetab4">&#60;td align="center"&#62;<br></div>
+                                            <div id="codetab5">&#60;!--Table of top songs--&#62;<br></div>
+                                            <div id="codetab5">&#123;&#37; table id="song_table" managerid="top_song_search" &#37;&#125;<br></div>
+                                            <div id="codetab5">&#60;br&#62;<br></div>
+                                            <div id="codetab5">&#60;!--Dropdown bar defining the number of songs to get--&#62;<br></div>
+                                            <div id="codetab5">&#123;&#37; dropdown id="drop_songcount" default="5" value="$songcount$"|token_safe showClearButton=False &#37;&#125;<br></div>
+                                        <div id="codetab4">&#60;/td&#62;<br></div>
+                                    <div id="codetab3">&#60;/tr&#62;<br></div>
+                                <div id="codetab2">&#60;/table&#62;<br></div>
+                            <div id="codetab">&#60;/div&#62;<br></div>
+                        &#60;/div&#62;</div><br>
+                        Then underneath the <b>&#123;&#37; endblock content &#37;&#125;</b> add this:<br>
+
+                    <br><div class="code">&#123;&#37; block managers &#37;&#125;<br>
+                    <br>
+                        <div id="codetab">&#60;!--Artists search--&#62;<br></div>
+                        <div id="codetab">&#123;&#37; searchmanager id="artist_chart" search="| inputlookup musicdata.csv | search bc_uri=/sync/addtolibrary* | stats count by artist_name | sort count desc | table artist_name count | head $artistcount$"|token_safe cache=True &#37;&#125;<br></div>
+                        <div id="codetab">&#60;!--Song search--&#62;<br></div>
+                        <div id="codetab">&#123;&#37; searchmanager id="top_song_search" search="| inputlookup musicdata.csv | search bc_uri=/sync/addtolibrary* | stats count by track_name | sort count desc | table track_name count | head $songcount$"|token_safe cache=True &#37;&#125;<br></div>
+                    <br>
+                    &#123;&#37; endblock managers &#37;&#125;</div><br>
+                    <br>
+                    Then finally, in the <b>&#123;&#37; block js &#37;&#125;</b> replace everything with this:<br>
+
+                    <br><div class="code">&#60;script&#62;<br>
+                        <div id="codetab">// Load the required libraries--in this case, the SplunkJS Stack and radio buttons<br></div>
+                        <div id="codetab">var deps = [<br></div>
+                        <div id="codetab2">"splunkjs/ready!",<br></div>
+                        <div id="codetab2">"splunkjs/mvc/radiogroupview"<br></div>
+                        <div id="codetab">];<br></div>
+                        <div id="codetab">require(deps, function(mvc) &#123;<br></div>
+                        <div id="codetab">// Define a dictionary of choices for the dropdown list<br></div>
+                        <div id="codetab">var choices_headcount = [<br></div>
+                        <div id="codetab2">&#123;label:"1", value: "1"&#125;,<br></div>
+                        <div id="codetab2">&#123;label:"2", value: "2"&#125;,<br></div>
+                        <div id="codetab2">&#123;label:"3", value: "3"&#125;,<br></div>
+                        <div id="codetab2">&#123;label:"4", value: "4"&#125;,<br></div>
+                        <div id="codetab2">&#123;label:"5", value: "5"&#125;,<br></div>
+                        <div id="codetab2">&#123;label:"6", value: "6"&#125;,<br></div>
+                        <div id="codetab2">&#123;label:"7", value: "7"&#125;,<br></div>
+                        <div id="codetab2">&#123;label:"8", value: "8"&#125;,<br></div>
+                        <div id="codetab2">&#123;label:"9", value: "9"&#125;,<br></div>
+                        <div id="codetab2">&#123;label:"10", value: "10"&#125;<br></div>
+                        <div id="codetab">];<br></div>
+                        <div id="codetab">// Set the choices into the dropdown list<br></div>
+                        <div id="codetab">splunkjs.mvc.Components.getInstance("drop_artistcount").settings.set("choices", choices_headcount);<br></div>
+                        <div id="codetab">splunkjs.mvc.Components.getInstance("drop_songcount").settings.set("choices", choices_headcount);<br></div>
+                        <div id="codetab">&#125;);<br></div>
+                    &#60;/script&#62;</div>
+                    <br>
+                    <h2 id="learnyoumust">Learn, You Must</h2>
+                    Now let's start discussing what we did.<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/force_2_css.png"><br>
+                    <br>
+                    We'll start with the <b>&#123;&#37; block css &#37;&#125;</b> we created a main-area class to help define how our main area will look.<br>
+                    The background is a plain white with a default black border, and a margin of 10 pixels(the area around the outside of the box from anything else).<br>
+                    We have a padding of 30 pixels so we don't have anything too close to the edge, along with the box height and width being set.<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/force_2_html.png"><br>
+                    <br>
+                    For the <b>&#123;&#37; block content &#37;&#125;</b> we have the main-area being defined to hold everything inside. We created a table to help set the object next to each other and flex the artist table a bit. We tell both halves of the table to be an even 50% of the main-area, then place the chart and table into there column with their respecting dropdown.<br>
+                    We use Django to define each of the Splunk elements we are using, each type has it's definition at it's start, then an id that is used to set objects to it and a managerid for a search query to set.<br>
+                    Most object, like chart and d3, will require a type to be set, you can also set attributes in their tags as well(like the drilldown attribute in the pie chart).<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/force_2_manager.png"><br>
+                    <br>
+                    The <b>&#123;&#37; block managers &#37;&#125;</b> is using Django to set a search query to the corisponding object in the <b>&#123;&#37; block content &#37;&#125;</b>.
+                    <br>
+                    Since the searches are looking at external data, in the search we tell Splunk the name of the file we are wanting to look at and make sure that it is located inside the <b>$SPLUNK_HOME/etc/apps/app_name/lookups/</b> folder.<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/force_2_javascript.png"><br>
+                    <br>
+                    Within the &#123;&#37; block js &#37;&#125; area, we require the Splunk libraries then define a array variable to set inside the two dropdown boxs.</p>
+                    <h2 id="next">Next Step</h2>
+                    <li><a onclick="switchPage('way_of_the_force_3', 'way_of_the_force_2')">Step 3: To Be A Jedi</a></li>
+            </div>
+        <div class="bottom"></div>
+    </div>
+</div>
+<div class="footer"></div>
+</body>
+</html>

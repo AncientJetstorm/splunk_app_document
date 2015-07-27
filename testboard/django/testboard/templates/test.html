@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>App Documentation Home</title>
+    <link rel="shortcut icon" href="{{SPLUNKWEB_URL_PREFIX}}/static/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/pages/dashboard-simple-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/app/search/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/custom.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/override.css" />
+    <script src="{{STATIC_URL}}{{app_name}}/required_javascript.js"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/config?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/i18n.js"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/i18ncatalog?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/build/simplexml.min/config.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/mtest.js"></script>
+
+    <!--[if IE 7]><link rel="stylesheet" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/sprites-ie7.css" /><![endif]-->
+</head>
+<body class="simplexml preload">
+
+<!-- 
+BEGIN LAYOUT
+This section contains the layout for the dashboard. Splunk uses proprietary
+styles in <div> tags, similar to Bootstrap's grid system. 
+-->
+<a class="navSkip" href="#navSkip" tabindex="1">Screen reader users, click here to skip the navigation bar</a>
+<div class="header">
+    <div id="placeholder-splunk-bar">
+        <a href="{{SPLUNKWEB_URL_PREFIX}}/app/launcher/home" class="brand" title="splunk > listen to your data">Welcome Home! Oh, wait...</a>
+    </div>
+    <div id="placeholder-app-bar"></div>
+</div>
+<a id="navSkip"></a>
+    <div class="dashboard-body" id="tester">
+        <div id="main" class="main-area">
+            <div id="content">
+                <div class="input input-dropdown" id="input1">
+                </div>
+                <div id="element2" class="dashboard-element table" style="width: 100%">
+                    <div class="panel-body"></div>
+                </div>
+                <br>
+                <center>
+                    <div id="accordion">
+                        <li id="accordionli" onclick="showhide('ali1')"><h4><center>One</center></h4>
+                            <p id="ali1" style="display: none">
+                                TempStuff
+                            </p>
+                        </li>
+                        <li id="accordionli" onclick="showhide('ali2')"><h4><center>Two</center></h4>
+                            <p id="ali2" style="display: none">
+                                tempsdsd
+                            </p>
+                        </li>
+                        <li id="accordionli" onclick="showhide('ali3')"><h4><center>Three</center></h4>
+                            <p id="ali3" style="display: none">
+                                temperet
+                            </p>
+                        </li>
+                    </div>
+                </center>
+                <center>
+                    <select id="input2" onchange="colorTest()">
+                        <option value="#AA3939" name="Gentle red">Gentle red</option>
+                        <option value="#2A4D6E" name="Soft blue">Soft blue</option>
+                        <option value="#789D34" name="Lush green">Lush green</option>
+                        <option value="#55A5CA" name="Original" selected>Original</option>
+                        <option value="#D3491E" name="Sunset">Sunset</option>
+                        <option value="#0B2C64" name="Ocean">Ocean</option>
+                    </select>
+                </center>
+                <br>
+                <center>
+                    <table>
+                        <tr>
+                            <td>
+                                Color: <input type="text" name="ncolor" id="ncolor"><br>
+                                Light: <input type="text" name="light" id="light"><br>
+                                Dark: <input type="text" name="dark" id="dark"><br>
+                                <input type="submit" value="Submit" onclick="colorTest2()">
+                            </td>
+                            <td>
+                                Color One: <input type="text" name="cone" id="cone"><br>
+                                Color Two: <input type="text" name="ctwo" id="ctwo"><br>
+                                <input type="submit" value="Submit" onclick="colorTest3()">
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+                <br>
+                <div id="test1"></div>
+                <br>
+                <div id="test2"></div>
+                <br>
+                <div id="color1" class="coloring"><center><span style="background-color: white" id="center1"></span></center></div>
+                <div id="color2" class="coloring"><center><span style="background-color: white" id="center2"></span></center></div>
+                <div id="color3" class="coloring"><center><span style="background-color: white" id="center3"></span></center></div>
+                <div id="color4" class="coloring"><center><span style="background-color: white" id="center4"></span></center></div>
+                <div id="color5" class="coloring"><center><span style="background-color: white" id="center5"></span></center></div>
+                <div id="color6" class="coloring"><center><span style="background-color: white" id="center6"></span></center></div>
+                <div id="color7" class="coloring"><center><span style="background-color: white" id="center7"></span></center></div>
+                <div id="color8" class="coloring"><center><span style="background-color: white" id="center8"></span></center></div>
+                <div id="color9" class="coloring"><center><span style="background-color: white" id="center9"></span></center></div>
+                <div id="color10" class="coloring"><center ><span style="background-color: white" id="center10"></span></center></div>
+                <div id="color11" class="coloring"><center ><span style="background-color: white" id="center11"></span></center></div>
+                Random color palette <input type="submit" value="Submit" id="renderupdate" onclick="forcerender()"> !WARNING! Some color palettes may be too gorgeous for most people.
+                <br>
+                <input type="submit" value="Submit" onclick="pieCycle()">
+                <table style="border: none" width="100%">
+                    <tr style="border: none">
+                        <td width="50%" style="border: none">
+                            <div id="element1" class="dashboard-element chart" style="width: 100%">
+                                <div class="panel-body"></div>
+                            </div>
+                        </td>
+                        <td style="border: none">
+                            <center>
+                                #1 <input type="text" id="piec1"><br>
+                                #2 <input type="text" id="piec2"><br>
+                                #3 <input type="text" id="piec3"><br>
+                                #4 <input type="text" id="piec4"><br>
+                                #5 <input type="text" id="piec5"><br>
+                                <input type="submit" value="Submit" onclick="coloredPie()">
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+                
+            </div>
+        <div class="bottom"></div>
+    </div>
+</div>
+<div class="footer"></div>
+</body>
+</html>

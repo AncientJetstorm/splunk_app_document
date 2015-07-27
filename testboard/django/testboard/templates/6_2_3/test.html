@@ -1,0 +1,197 @@
+{% load splunkmvc %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>JavaScript and HTML</title>
+    <meta name="description" content="A JavaScript dashboard">
+    <meta name="author" content="Splunk Inc.">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}splunkjs/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}splunkjs/css/dashboard.css">
+</head>
+
+<body>
+    <div class="header">
+        <div id="myheader"></div>
+    </div>
+
+    <div class="dashboard-body container-fluid main-section-body" data-role="main">
+
+        <div class="dashboard-header clearfix">
+            <h2>JavaScript and HTML</h2>
+            <p class="description">A dashboard that was created using JavaScript and HTML</p>
+        </div>
+
+        <!-- Row One with three cells -->
+        <div class="dashboard-row dashboard-row1">
+            <div class="dashboard-cell" style="width: 25%;">
+                <div class="dashboard-panel clearfix">
+                    <div class="dashboard-element">
+                        <div class="panel-head">
+                            <h3>Number of results</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="drop_headcount"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-cell" style="width: 25%;">
+                <div class="dashboard-panel clearfix">
+                    <div class="dashboard-element">
+                        <div class="panel-head">
+                            <h3>Source types</h3>
+                        </div>
+                        <div class="panel-body" >
+                            <div id="chkboxes_sourcetype"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-cell" style="width: 50%;">
+                <div class="dashboard-panel clearfix">
+                    <div class="dashboard-element">
+                        <div class="panel-head">
+                            <h3>Chart</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="chart_sourcetype"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row Two -->
+        <div class="dashboard-row dashboard-row2">
+            <div class="dashboard-cell" style="width: 100%;">
+                <div class="dashboard-panel clearfix">                
+                    <div class="panel-element-row">
+                        <div class="dashboard-element table" style="width: 100%">
+                            <div class="panel-head">
+                                <h3>Search results</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div id="table_searchresults"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% component_loader %}   
+
+    <script>
+        var deps = [
+            "splunkjs/ready!",
+            "splunkjs/mvc/headerview",
+            "splunkjs/mvc/searchmanager",
+            "splunkjs/mvc/dropdownview",
+            "splunkjs/mvc/checkboxgroupview",
+            "splunkjs/mvc/tableview",
+            "splunkjs/mvc/chartview"
+        ];
+        require(deps, function(mvc) {
+            var HeaderView = require("splunkjs/mvc/headerview");
+            var SearchManager = require("splunkjs/mvc/searchmanager");
+            var DropdownView = require("splunkjs/mvc/dropdownview");
+            var CheckboxGroupView = require("splunkjs/mvc/checkboxgroupview");
+            var TableView = require("splunkjs/mvc/tableview");
+            var ChartView = require("splunkjs/mvc/chartview");
+
+            // Instantiate components
+            new HeaderView({
+                id: "myheader",
+                el: $("#myheader")
+            }).render();
+
+            new SearchManager({
+                id: "search_sourcetypes",
+                search: "index=_internal | head 1000 | top sourcetype",
+                preview: false,
+                cache: true
+            });
+
+            new SearchManager({
+                id: "search_resulttable",
+                search: mvc.tokenSafe("index=_internal $sourcetype$ | head $headcount$"),
+                preview: false,
+                cache: true
+            });
+
+            new SearchManager({
+                id: "search_chart",
+                search: "index=_internal | stats count by sourcetype",
+                preview: false,
+                cache: true
+            });
+
+            new TableView({
+                id: "table_searchresults",
+                managerid: "search_resulttable",
+                el: $("#table_searchresults")
+            }).render();
+
+            new ChartView({
+                id: "chart_sourcetype",
+                managerid: "search_chart",
+                type: "pie",
+                drilldown: "none",
+                el: $("#chart_sourcetype")
+            }).render();
+
+            var mydropdown = new DropdownView({
+                id: "drop_headcount",
+                default: "5",
+                value: mvc.tokenSafe("$headcount$"),
+                showClearButton: false,
+                el: $("#drop_headcount")
+            }).render();
+
+            var mycheckboxes = new CheckboxGroupView({
+                id: "chkboxes_sourcetype",
+                managerid: "search_sourcetypes",
+                labelField: "sourcetype",
+                valueField: "sourcetype",
+                default: "splunkd",
+                el: $("#chkboxes_sourcetype")
+            }).render();
+
+            // Define choices for the dropdown list
+            var choices_headcount = [
+                {label:"5", value: "5"},
+                {label:"10", value: "10"},
+                {label:"15", value: "15"}
+            ];
+            
+            // Set the choices into the dropdown list
+            mydropdown.settings.set("choices", choices_headcount); 
+
+            // Set the $sourcetype$ token to the default value, "splunkd"
+            mvc.Components.get('default').set('sourcetype', "splunkd", {tokens: true});
+
+            // When a checkbox is clicked, form a sourcetype string from the selected choices
+            // and manually update the $sourcetype$ token
+            mycheckboxes.on("change", function() {
+                // Form the sourcetype string
+                var selectedsourcetypes="sourcetype=" + mycheckboxes.val().join(" OR sourcetype=");
+
+                // If no boxes checked, deliberately set the sourcetype to nothing so that the search is properly formed
+                if (selectedsourcetypes=="sourcetype=")
+                {
+                    selectedsourcetypes="sourcetype=''";
+                }
+
+                // Set the value for the $sourcetype$ token
+                mvc.Components.get('default').set('sourcetype', selectedsourcetypes, {tokens: true});
+            });
+
+        });
+    </script>
+</body>
+</html>

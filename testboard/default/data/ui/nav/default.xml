@@ -1,0 +1,28 @@
+<nav color="#55A5C8">
+	<view name="default" default='true'/>
+	<collection label="Versions">
+		<collection label="6.2.3">
+        	<view name="overview"/>
+          <collection label="Way Of The Force">
+            <view name="way_of_the_force" />
+            <view name="way_of_the_force_1" />
+            <view name="way_of_the_force_2" />
+            <view name="way_of_the_force_3" />
+            <view name="way_of_the_force_4" />
+            <view name="way_of_the_force_5" />
+            <view name="way_of_the_force_6" />
+          </collection>
+          <collection label="Way Of The Forge">
+            <view name="way_of_the_forge" />
+            <view name="way_of_the_forge_1" />
+            <view name="way_of_the_forge_2" />
+            <view name="way_of_the_forge_3" />
+            <view name="way_of_the_forge_4" />
+            <view name="way_of_the_forge_5" />
+            <view name="way_of_the_forge_6" />
+          </collection>
+          <view name="reference" />
+          <view name="style" />
+		</collection>
+  </collection>
+</nav>

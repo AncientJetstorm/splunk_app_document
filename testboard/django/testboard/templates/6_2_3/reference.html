@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>App 6.2.3 Reference</title>
+    <link rel="shortcut icon" href="{{SPLUNKWEB_URL_PREFIX}}/static/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/pages/dashboard-simple-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/app/search/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/custom.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/override.css" />
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/config?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/i18n.js"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/i18ncatalog?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/build/simplexml.min/config.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_javascript.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_splunk.js"></script>
+    <!--[if IE 7]><link rel="stylesheet" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/sprites-ie7.css" /><![endif]-->
+</head>
+<body class="simplexml preload">
+
+<!-- 
+BEGIN LAYOUT
+This section contains the layout for the dashboard. Splunk uses proprietary
+styles in <div> tags, similar to Bootstrap's grid system. 
+-->
+<a class="navSkip" href="#navSkip" tabindex="1">Screen reader users, click here to skip the navigation bar</a>
+<div class="header">
+    <div id="placeholder-splunk-bar">
+        <a href="{{SPLUNKWEB_URL_PREFIX}}/app/launcher/home" class="brand" title="splunk > listen to your data">REFERENCE ME! #ReferencedLife</a>
+    </div>
+    <div id="placeholder-app-bar"></div>
+</div>
+<a id="navSkip"></a>
+    <div class="dashboard-body">
+        <div id="main" class="main-area">
+            <h1 align="center">
+                Reference Sheet
+            </h1>
+            <div id="content">
+                <h2 id="content_index">
+                    Content
+                </h2>
+                    <p>
+                        
+                        <li id="testAct">
+                            <img id="imgswitch1" onclick="listChange('sublist1', 'imgswitch1')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                            <a href="#overview">
+                                Overview
+                            </a>
+                        </li>
+                        <li id="testAct">
+                            <img id="imgswitch2" onclick="listChange('sublist2', 'imgswitch2')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                            <a href="#generateapp">
+                                Generate An App Skeleton
+                            </a>
+                        </li>
+                        <li id="testAct">
+                            <img id="imgswitch3" onclick="listChange('sublist3', 'imgswitch3')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                            <a href="#appicon">
+                                App Icons, Nav Image
+                            </a>
+                        </li>
+                        <li id="testAct">
+                            <img id="imgswitch4" onclick="listChange('sublist4', 'imgswitch4')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                            <a href="#addingnav">
+                                Adding Navigation
+                            </a> 
+                                <ul id="sublist4" style="display: none">
+                                    <li>
+                                        <a href="#navbar">
+                                            Navigation Bar
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#navfiles">
+                                            Navigation Files
+                                        </a>
+                                    </li>
+                                </ul>
+                        </li>
+                        <li id="testAct">
+                            <img id="imgswitch5" onclick="listChange('sublist5', 'imgswitch5')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                            <a href="#addingnav">
+                                Adding A Search Manager
+                            </a> 
+                                <ul id="sublist5" style="display: none">
+                                    <li>
+                                        <a href="#sdjango">
+                                            Django
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#sjavascript">
+                                            Javascript
+                                        </a>
+                                    </li>
+                                </ul>
+                        </li>
+                        <li id="testAct">
+                            <img id="imgswitch6" onclick="listChange('sublist6', 'imgswitch6')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                            <a href="#addelem">
+                                Adding Elements
+                            </a>
+                                <ul id="sublist6" style="display: none">
+                                    <li>
+                                        <a href="#eevent">
+                                            Event
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#etable">
+                                            Table
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#echart">
+                                            Chart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#esingle">
+                                            Single
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#emap">
+                                            Map
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#etext">
+                                            Text
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#eradio">
+                                            Radio Button
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#edropdown">
+                                            Dropdown
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#echeckbox">
+                                            Checkbox
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#emulti">
+                                            Multi Select
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#etime">
+                                            Time Range
+                                        </a>
+                                    </li>
+                                </ul>
+                        </li>
+                        <li id="testAct">
+                            <img id="imgswitch7" onclick="listChange('sublist7', 'imgswitch7')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                            <a href="#ctgattributes">
+                                Element Attributes
+                            </a>
+                                <ul id="sublist7" style="display: none">
+                                    <li>
+                                        <a href="#aevent">
+                                            Event
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#atable">
+                                            Table
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#agchart">
+                                            General Chart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#aline">
+                                            Line Chart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#aarea">
+                                            Area Chart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#acolumn">
+                                            Column Chart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#abar">
+                                            Bar Chart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#apie">
+                                            Pie Chart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#ascatter">
+                                            Scatter Chart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#abubble">
+                                            Bubble Chart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#aradial">
+                                            Radial Gauge Chart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#afiller">
+                                            Filler Gauge Chart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#amarker">
+                                            Marker Gauge Chart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#asingle">
+                                            Single
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#amap">
+                                            Map
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#atext">
+                                            Text
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#aradio">
+                                            Radio Button
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#adropdown">
+                                            Dropdown
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#acheckbox">
+                                            Checkbox
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#amulti">
+                                            Multi Select
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#atime">
+                                            Time Range
+                                        </a>
+                                    </li>
+                                </ul>
+                        </li>
+                        <li id="testAct">
+                            <img id="imgswitch8" onclick="listChange('sublist8', 'imgswitch8')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                            <a href="#package">
+                                Packaging And Splunkbase
+                            </a>
+                        </li>
+                        <li id="testAct">
+                            <img id="imgswitch9" onclick="listChange('sublist9', 'imgswitch9')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                            <a href="#splunktricks">
+                                Splunk Tricks
+                            </a>
+                        </li>
+                        <li id="testAct">
+                            <img id="imgswitch21" onclick="listChange('sublist21', 'imgswitch21')" src="{{STATIC_URL}}{{app_name}}/list_close.png">
+                            <a href="#template">
+                                Template app
+                            </a>
+                        </li>
+                        <li id="testAct">
+                            <img id="imgswitch10" onclick="listChange('sublist10', 'imgswitch10')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                            <a href="#???">
+                                ???
+                            </a>
+                        </li>
+                        <li id="testAct">
+                            <img id="imgswitch11" onclick="listChange('sublist11', 'imgswitch11')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                            <a href="#questions">
+                                Questions, Comments, Feedback
+                            </a>
+                        </li>
+                        <br>
+                        Click on some of the arrows to get more choices.
+                    </p>
+                <h2 id="overview">
+                    Overview
+                </h2>
+                    <p>
+                        This is a reference document for app development.<br>
+                        The reference documents are not complete and will continuously be updated.<br>
+                        <font style="font-size: 8px">Disclaimer! This document also represents how I am currently doing these tasks, there may also be other ways to do each.<br>
+                        Disclaimer! This does not cover buiding in xml.</font>
+                    </p>
+                <h2 id="generateapp">
+                    Generate An App Skeleton
+                </h2>
+                    <p>
+                        Open Splunk, navigate through your Splunk application to manage apps, click the button that says <b>Create app</b><br>
+                        Fill out the information and click on the save button.<br>
+                        <br>
+                        Or<br>
+                        <br>
+                        Open a terminal, cd to your Splunk home, cd under <b>etc/apps/framework</b> then run <code>./splunkdj createapp app_name</code> and be sure to replace <b>app_name</b> with the name of your app.<br>
+                        It should ask for your username and password, then it will create the app skeleton.
+                    </p>
+                <h2 id="appicon">
+                    App Icons, Nav Image
+                </h2>
+                    <p class="tabless">
+                        <table width="100%">
+                            <tr height="100px">
+                                <td width="50%">
+                                    <center>
+                                        $SPLUNK_HOME/etc/apps/app_name/static/appicon.png<br>
+                                        $SPLUNK_HOME/etc/apps/app_name/static/appicon_2.png
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        Image used on the Splunk application home for your app, normal and high resolution.<br>
+                                        36 x 36 | 72 x 72
+                                    </center>
+                                </td>
+                            </tr>
+                            <tr height="100px">
+                                <td>
+                                    <center>
+                                        $SPLUNK_HOME/etc/apps/app_name/static/appiconalt.png<br>
+                                        $SPLUNK_HOME/etc/apps/app_name/static/appiconalt_2.png
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        Image used on the Splunk application app dropdown menu for your app, normal and high resolution.<br>
+                                        36 x 36 | 72 x 72
+                                    </center>
+                                </td>
+                            </tr>
+                            <tr height="100px">
+                                <td>
+                                    <center>
+                                        $SPLUNK_HOME/etc/apps/app_name/static/applogo.png<br>
+                                        $SPLUNK_HOME/etc/apps/app_name/static/applogo_2.png
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        Image used on the navigation bar for your app, far right of nav, normal and high resolution.<br>
+                                        160 x 40 | 320 x 80
+                                    </center>
+                                </td>
+                            </tr>
+                        </table>
+                    </p>
+                <h2 id="addingnav">
+                    Adding Navigation
+                </h2>
+                    <h4 class="tabless" id="navbar">
+                        Navigation Bar
+                    </h4>
+                        <p>
+                            <div id="codetab2">
+                                Open the <b>default.xml</b> file in the <b>$SPLUNK_HOME/etc/apps/app_name/default/ui/nav/</b> folder:<br>
+                                <br>
+                                <img class="myImg" src="{{STATIC_URL}}{{app_name}}/default_xml.png"><br>
+                                <br>
+                                Or if that does not exist, then it will be under the <b>$SPLUNK_HOME/etc/apps/app_name/local/data/ui/nav/</b> folder and be default to the search navigation:<br>
+                                <br>
+                                <img class="myImg" src="{{STATIC_URL}}{{app_name}}/default_search.png"><br>
+                                <br>
+                            </div>
+                        </p>
+                    <h4 class="tabless" id="navfiles">
+                        Navigation Files
+                    </h4>
+                        <p id="codetab2">
+                            In the <b>$SPLUNK_HOME/etc/apps/app_name/default/data/ui/views/</b> folder, you should see a <b>default.xml</b> file that looks like this:<br>
+                            <br>
+                            <img class="myImg" src="{{STATIC_URL}}{{app_name}}/redirect_xml.png"><br>
+                            <br>
+                            This links Splunk to the file <b>redirect.tmpl</b> under the <b>$SPLUNK_HOME/etc/apps/app_name/appserver/templates/</b> folder which goes to the home page.<br>
+                            To add more links to your navigation bar, create a copy of <b>default.xml</b> then change the Home inside the <code>&#60;label&#62;</code> tags to what you want displayed, and change the redirect.tmpl inside the <b>template</b> attribute to a new name for the .tmpl<br>
+                            Create a copy of the <b>redirect.tmpl</b> then change the Javascript area that says <code>document.location</code> to the correct location and save with the .tmpl file name that you refered to in the .xml file you created.<br>
+                            Once those are created, go to the <b>$SPLUNK_HOME/etc/apps/app_name/default/ui/nav/</b> folder and open the <b>default.xml</b> file, then add:<br>
+                            <div class="code" id="codetab2">
+                                &#60;view name="xml_file_name" /&#62;
+                            </div>
+                            <br>
+                            <div id="codetab2">
+                                And replace the xml_file_name with the name of the .xml file you created.<br>
+                                You may also link directly to it like this:<br>
+                            </div>
+                            <br>
+                            <div class="code" id="codetab2">
+                                &#60;a href="/dj/app_name/home"&#62;home&#60;/a&#62;
+                            </div>
+                            <br>
+                            <div id="codetab2">
+                                Just replace home with the file name.<br>
+                                If you view the template_app&#40;see the <a href="#template">Template app</a> section&#41; then the <b>default.xml</b> file will have an example of each way for a page called color.<br>
+                                <br>
+                                <img class="myImg" src="{{STATIC_URL}}{{app_name}}/template_default.png"><br>
+                                <br>
+                                There is also the <code>&#60;collection&#62;</code> tags that give you a dropdown list of links.
+                            </div>
+                        </p>
+                <h2 id="addsearch">
+                    Adding A Search Manager
+                </h2>
+                    <h4 class="tabless" id="sdjango">
+                        Django
+                    </h4>
+                    <p><div id="codetab2">
+                        Open the HTML file you are working with, example <b>home.html</b>, then locate the <b>&#123;&#37; block managers &#37;&#125;</b> area and add:<br>
+                        <br> 
+                        <div class="code">
+                            &#123;&#37; searchmanager id="search_id" search="splunk_search" cache=True &#37;&#125;<br>
+                        </div>
+                        <br>
+                        Replace the <b>search_id</b> with the name you want to reference to, example pie_search_1, and replace the <b>splunk_search</b> with your search query.
+                    </div></p>
+                    <h4 class="tabless" id="sjavascript">
+                        Javascript
+                    </h4>
+                    <p><div id="codetab2">
+                        Open the HTML file you are working with, example <b>home.html</b>, then locate the <b>// SEARCH MANAGERS</b> area and add:<br>
+                        <br>
+                        <div class="code">
+                            var search_name = new SearchManager&#40;&#123;<br>
+                                <div id="codetab">"id": "search_id",</div>
+                                <div id="codetab">"search": "splunk_search",</div>
+                                <div id="codetab">"cancelOnUnload": true,</div>
+                                <div id="codetab">"status_buckets": 0,</div>
+                                <div id="codetab">"app": utils.getCurrentApp(),</div>
+                                <div id="codetab">"preview": true,</div>
+                                <div id="codetab">"runWhenTimeIsUndefined": false</div>
+                            &#125;, &#123;tokens: true, tokenNamespace: "submitted"&#125;&#41;;<br>
+                        </div>
+                        <br>
+                        Replace the <b>search_name</b> with what you want, example search1, then replace the <b>search_id</b> with the name you want to reference, example pie_search_1, and replace the <b>splunk_search</b> with your search query.<br>
+                        If you have an input element effecting a search manager, then remove the <code>, tokenNamespace: "submitted"</code> from the bottom line. This allows the search to be updated.<br>
+                        View the <a href="#ctgattributes">Element Attributes</a> section for more things to add, example <b>"earliest_time": ""</b> and <b>"latest_time": ""</b>
+                    </div></p>
+                <h2 id="addelem">
+                    Adding Elements
+                </h2>
+                    <table width="100%">
+                        <tr>
+                            <td>
+                                <center>
+                                    <h4>
+                                        Element
+                                    </h4>
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    <h4>
+                                        Django
+                                    </h4>
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    <h4>
+                                        Javascript
+                                    </h4>
+                                </center>
+                            </td>
+                        </tr>
+                        <tr height="150px">
+                            <td rowspan="2">
+                                <h4><center>Information</center></h4>
+                            </td>
+                            <td>
+                                <center>
+                                    Open the HTML file you are adding to, then add the following to the HTML spot that you want it:
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    Open the HTML file you are adding to, then locate the <b>// VIEWS: VISUALIZATION ELEMENTS</b> area and add the JavaScript part underneath it.<br>
+                                    Then add the HTML part where you want it, make sure that a input type is inside a <code>&#60;div class="filedset"&#62;&#60;/div&#62;</code> tag.
+                                </center>
+                            </td>
+                        </tr>
+                        <tr height="125px">
+                            <td colspan="2">
+                                <center>
+                                    Chart Types: line, area, column, bar, pie, scatter, bubble, radialGauge, fillerGauge, markerGauge<br>
+                                    <b>element_id/input_id</b> = name of the element/input object you are going to refer to.<br>
+                                    <b>search_id</b>  = search manager id that you create, see above section.<br>
+                                    <b>element_type</b> = chart type, see first line Chart Types.
+                                </center>
+                            </td>
+                        </tr>
+                        <tr height="250px">
+                            <td width="20%">
+                                <h4 id="eevent">
+                                    <center>
+                                        Event
+                                    </center>
+                                </h4>
+                            </td>
+                            <th width="40%">
+                                <p>
+                                    &#123;&#37; event id="element_id" managerid="search_id" &#37;&#125;
+                                </p>
+                            </th>
+                            <th>
+                                <p>
+                                    &#60;!--html part--&#62;<br>
+                                    &#60;div id="element_id" class="dashboard-element event"&#62;<br>
+                                    &#60;/div&#62;<br>
+                                    <br>
+                                    // javascript part<br>
+                                    var element_id = new EventElement&#40;&#123;
+                                        <div id="codetab">"id": "element_id",</div>
+                                        <div id="codetab">"type": "list",</div>
+                                        <div id="codetab">"managerid": "search_id",</div>
+                                        <div id="codetab">"el": $&#40;'#element_id'&#41;</div>
+                                    &#125;, &#123;tokens: true, tokenNamespace: "submitted"&#125;&#41;.render&#40;&#41;;
+                                </p>
+                            </th>
+                        </tr>
+                        <tr height="250px">
+                            <td>
+                                <h4 id="etable">
+                                    <center>
+                                        Table
+                                    </center>
+                                </h4>
+                            </td>
+                            <th>
+                                <p>
+                                    &#123;&#37; table id="element_id" managerid="search_id" &#37;&#125;
+                                </p>
+                            </th>
+                            <th>
+                                <p>
+                                    &#60;!--html part--&#62;<br>
+                                    &#60;div id="element_id" class="dashboard-element table"&#62;<br>
+                                    &#60;/div&#62;<br>
+                                    <br>
+                                    // javascript part<br>
+                                    var element_id = new TableElement&#40;&#123;
+                                        <div id="codetab">"id": "element_id",</div>
+                                        <div id="codetab">"managerid": "search_id",</div>
+                                    &#125;, &#123;tokens: true, tokenNamespace: "submitted"&#125;&#41;.render&#40;&#41;;
+                                </p>
+                            </th>
+                        </tr>
+                        <tr height="250px">
+                            <td>
+                                <h4 id="echart">
+                                    <center>
+                                        Chart
+                                    </center>
+                                </h4>
+                            </td>
+                            <th>
+                                <p>
+                                    &#123;&#37; chart id="element_id" managerid="search_id" type="element_type" &#37;&#125;
+                                </p>
+                            </th>
+                            <th>
+                                <p>
+                                    &#60;!--html part--&#62;<br>
+                                    &#60;div id="element_id" class="dashboard-element chart"&#62;<br>
+                                    &#60;/div&#62;<br>
+                                    <br>
+                                    // javascript part<br>
+                                    var element_id = new ChartElement&#40;&#123;
+                                        <div id="codetab">"id": "element_id",</div>
+                                        <div id="codetab">"charting.chart": "element_type",</div>
+                                        <div id="codetab">"managerid": "search_id",</div>
+                                        <div id="codetab">"el": $&#40;'#element_id'&#41;</div>
+                                    &#125;, &#123;tokens: true, tokenNamespace: "submitted"&#125;&#41;.render&#40;&#41;;
+                                </p>
+                            </th>
+                        </tr>
+                        <tr height="250px">
+                            <td>
+                                <h4 id="esingle">
+                                    <center>
+                                        Single
+                                    </center>
+                                </h4>
+                            </td>
+                            <th>
+                                <p>
+                                    &#123;&#37; single id="element_id" managerid="search_id" &#37;&#125;
+                                </p>
+                            </th>
+                            <th>
+                                <p>
+                                    &#60;!--html part--&#62;<br>
+                                    &#60;div id="element_id" class="dashboard-element single"&#62;<br>
+                                    &#60;/div&#62;<br>
+                                    <br>
+                                    // javascript part<br>
+                                    var element_id = new SingleElement&#40;&#123;
+                                        <div id="codetab">"id": "element_id",</div>
+                                        <div id="codetab">"managerid": "search_id",</div>
+                                        <div id="codetab">"el": $&#40;'#element_id'&#41;</div>
+                                    &#125;, &#123;tokens: true, tokenNamespace: "submitted"&#125;&#41;.render&#40;&#41;;
+                                </p>
+                            </th>
+                        </tr>
+                        <tr height="250px">
+                            <td>
+                                <h4 id="emap">
+                                    <center>
+                                        Map
+                                    </center>
+                                </h4>
+                            </td>
+                            <th>
+                                <p>
+                                    &#123;&#37; map id="element_id" managerid="search_id" &#37;&#125;
+                                </p>
+                            </th>
+                            <th>
+                                <p>
+                                    &#60;!--html part--&#62;<br>
+                                    &#60;div id="element_id" class="dashboard-element map"&#62;<br>
+                                    &#60;/div&#62;<br>
+                                    <br>
+                                    // javascript part<br>
+                                    var element_id = new MapElement&#40;&#123;
+                                        <div id="codetab">"id": "element_id",</div>
+                                        <div id="codetab">"managerid": "search_id",</div>
+                                        <div id="codetab">"el": $&#40;'#element_id'&#41;</div>
+                                    &#125;, &#123;tokens: true, tokenNamespace: "submitted"&#125;&#41;.render&#40;&#41;;
+                                </p>
+                            </th>
+                        </tr>
+                        <tr height="250px">
+                            <td>
+                                <h4 id="etext">
+                                    <center>
+                                        Text
+                                    </center>
+                                </h4>
+                            </td>
+                            <th>
+                                <p>
+                                    &#123;&#37; text id="input_id" managerid="search_id" &#37;&#125;
+                                </p>
+                            </th>
+                            <th>
+                                <p>
+                                    &#60;!--html part--&#62;<br>
+                                    &#60;div class="input input-text" id="input_id"&#62;<br>
+                                    &#60;/div&#62;<br>
+                                    <br>
+                                    // javascript part<br>
+                                    var input_id = new TextInput&#40;&#123;
+                                        <div id="codetab">"id": "input_id",</div>
+                                        <div id="codetab">"value": "$form.field1$",</div>
+                                        <div id="codetab">"el": $('#input_id')</div>
+                                    &#125;, &#123;tokens: true&#125;&#41;.render&#40;&#41;;
+                                    <br>
+                                    input_id.on&#40;"change", function&#40;newValue&#41; &#123;
+                                        <div id="codetab">FormUtils.handleValueChange&#40;input_id&#41;;</div>
+                                    &#125;&#41;;
+                                </p>
+                            </th>
+                        </tr>
+                        <tr height="250px">
+                            <td>
+                                <h4 id="eradio">
+                                    <center>
+                                        Radio Button
+                                    </center>
+                                </h4>
+                            </td>
+                            <th>
+                                <p>
+                                    &#123;&#37; radio id="input_id" managerid="search_id" &#37;&#125;
+                                </p>
+                            </th>
+                            <th>
+                                <p>
+                                    &#60;!--html part--&#62;<br>
+                                    &#60;div class="input input-radio" id="input_id"&#62;<br>
+                                    &#60;/div&#62;<br>
+                                    <br>
+                                    // javascript part<br>
+                                    var input_id = new RadioGroupInput&#40;&#123;
+                                        <div id="codetab">"id": "input_id",</div>
+                                        <div id="codetab">"choices": &#91;</div>
+                                            <div id="codetab2">&#123;"value": "1", "label": "1"&#125;</div>
+                                        <div id="codetab">&#93;,</div>
+                                        <div id="codetab">"value": "$form.field1$",</div>
+                                        <div id="codetab">"el": $&#40;'#input_id'&#41;</div>
+                                    &#125;, &#123;tokens: true&#125;&#41;.render&#40;&#41;;
+                                    <br>
+                                    input_id.on&#40;"change", function&#40;newValue&#41; &#123;
+                                        <div id="codetab">FormUtils.handleValueChange&#40;input_id&#41;;</div>
+                                    &#125;&#41;;
+                                </p>
+                            </th>
+                        </tr>
+                        <tr height="250px">
+                            <td>
+                                <h4 id="edropdown">
+                                    <center>
+                                        Dropdown
+                                    </center>
+                                </h4>
+                            </td>
+                            <th>
+                                <p>
+                                    &#123;&#37; dropdown id="input_id" managerid="search_id" &#37;&#125;
+                                </p>
+                            </th>
+                            <th>
+                                <p>
+                                    &#60;!--html part--&#62;<br>
+                                    &#60;div class="input input-dropdown" id="input_id"&#62;<br>
+                                    &#60;/div&#62;<br>
+                                    <br>
+                                    // javascript part<br>
+                                    var input_id = new DropdownInput&#40;&#123;
+                                        <div id="codetab">"id": "input_id",</div>
+                                        <div id="codetab">"choices": &#91;</div>
+                                            <div id="codetab2">&#123;"value": "1", "label": "1"&#125;</div>
+                                        <div id="codetab">&#93;,</div>
+                                        <div id="codetab">"value": "$form.field1$",</div>
+                                        <div id="codetab">"el": $&#40;'#input_id'&#41;</div>
+                                    &#125;, &#123;tokens: true&#125;&#41;.render&#40;&#41;;
+                                    <br>
+                                    input_id.on&#40;"change", function&#40;newValue&#41; &#123;
+                                        <div id="codetab">FormUtils.handleValueChange&#40;input_id&#41;;</div>
+                                    &#125;&#41;;
+                                </p>
+                            </th>
+                        </tr>
+                        <tr height="250px">
+                            <td>
+                                <h4 id="echeckbox">
+                                    <center>
+                                        Checkbox
+                                    </center>
+                                </h4>
+                            </td>
+                            <th>
+                                <p>
+                                    &#123;&#37; checkboxgroup id="input_id" managerid="search_id" &#37;&#125;
+                                </p>
+                            </th>
+                            <th>
+                                <p>
+                                    &#60;!--html part--&#62;<br>
+                                    &#60;div class="input input-checkboxgroup" id="input_id"&#62;<br>
+                                    &#60;/div&#62;<br>
+                                    <br>
+                                    // javascript part<br>
+                                    var input_id = new CheckboxGroupInput&#40;&#123;
+                                        <div id="codetab">"id": "input_id",</div>
+                                        <div id="codetab">"choices": &#90;</div>
+                                            <div id="codetab2">&#123;"value": "1", "label": "1"&#125;</div>
+                                        <div id="codetab">&#93;,</div>
+                                        <div id="codetab">"value": "$form.field1$",</div>
+                                        <div id="codetab">"el": $&#40;'#input_id'&#41;</div>
+                                    &#125;, &#123;tokens: true&#125;&#41;.render&#40;&#41;;
+                                    <br>
+                                    input_id.on&#40;"change", function&#40;newValue&#41; &#123;
+                                        <div id="codetab">FormUtils.handleValueChange&#40;input_id&#41;;</div>
+                                    &#125;&#41;;
+                                </p>
+                            </th>
+                        </tr>
+                        <tr height="250px">
+                            <td>
+                                <h4 id="emulti">
+                                    <center>
+                                        Multi Select
+                                    </center>
+                                </h4>
+                            </td>
+                            <th>
+                                <p>
+                                    &#123;&#37; multiselect id="input_id" managerid="search_id" &#37;&#125;
+                                </p>
+                            </th>
+                            <th>
+                                <p>
+                                    &#60;!--html part--&#62;<br>
+                                    &#60;div class="input input-multiselect" id="input_id"&#62;<br>
+                                    &#60;/div&#62;<br>
+                                    <br>
+                                    // javascript part<br>
+                                    var input_id = new MultiSelectInput&#40;&#123;
+                                        <div id="codetab">"id": "input_id",</div>
+                                       <div id="codetab">"choices": &#91;</div>
+                                            <div id="codetab2">&#123;"value": "1", "label": "1"&#125;</div>
+                                        <div id="codetab">&#93;,</div>
+                                        <div id="codetab">"value": "$form.field1$",</div>
+                                        <div id="codetab">"el": $&#40;'#input_id'&#41;</div>
+                                    &#125;, &#123;tokens: true&#125;&#41;.render&#40;&#41;;
+                                    <br>
+                                    input_id.on&#40;"change", function&#40;newValue&#41; &#123;
+                                        <div id="codetab">FormUtils.handleValueChange&#40;input_id&#41;;</div>
+                                    &#125;&#41;;
+                                </p>
+                            </th>
+                        </tr>
+                        <tr height="250px">
+                            <td>
+                                <h4 id="etime">
+                                    <center>
+                                        Time Range
+                                    </center>
+                                </h4>
+                            </td>
+                            <th>
+                                <p>
+                                    &#123;&#37; timerangepicker id="input_id" managerid="search_id" &#37;&#125;
+                                </p>
+                            </th>
+                            <th>
+                                <p>
+                                    &#60;!--html part--&#62;<br>
+                                    &#60;div class="input input-timerangepicker" id="input_id"&#62;<br>
+                                    &#60;/div&#62;<br>
+                                    <br>
+                                    // javascript part<br>
+                                    var input_id = new TimeRangeInput&#40;&#123;
+                                        <div id="codetab">"id": "input_id",</div>
+                                        <div id="codetab">"default": &#123;"latest_time": null, "earliest_time": "0"&#125;,</div>
+                                        <div id="codetab">"earliest_time": "$form.field1.earliest$",</div>
+                                        <div id="codetab">"latest_time": "$form.field1.latest$",</div>
+                                        <div id="codetab">"el": $&#40;'#input_id'&#41;</div>
+                                    &#125;, &#123;tokens: true&#125;&#41;.render&#40;&#41;;
+                                    <br>
+                                    input_id.on&#40;"change", function&#40;newValue&#41; &#123;
+                                        <div id="codetab">FormUtils.handleValueChange&#40;input_id&#41;;</div>
+                                    &#125;&#41;;
+                                </p>
+                            </th>
+                        </tr>
+                    </table>
+                <h2 id="ctgattributes">
+                    Element Attributes
+                </h2>
+                    <table width="100%">
+                        <tr height="200px">
+                            <td width="30%" rowspan="1">
+                                <h4 class="tabless" id="aevent">
+                                    Event
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td rowspan="1">
+                                <h4 class="tabless" id="atable">
+                                    Table
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td rowspan="1">
+                                <h4 class="tabless" id="agchart">
+                                    General Chart
+                                </h4>
+                            </td>
+                            <th>
+                                <p>
+                                    <li id="testAct">
+                                        <img id="imgswitch12" onclick="listChange('sublist12', 'imgswitch12')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                                        charting.legend.placement
+                                            <ul id="sublist12" style="display: none">
+                                                <li>
+                                                    right
+                                                </li>
+                                                <li>
+                                                    bottom
+                                                </li>
+                                                <li>
+                                                    left
+                                                </li>
+                                                <li>
+                                                    top
+                                                </li>
+                                                <li>
+                                                    none
+                                                </li>
+                                            </ul>
+                                    </li>
+                                    <li id="testAct">
+                                        <img id="imgswitch13" onclick="listChange('sublist13', 'imgswitch13')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                                        charting.axisX.scale
+                                            <ul id="sublist13" style="display: none">
+                                                <li>
+                                                    linear
+                                                </li>
+                                                <li>
+                                                    log
+                                                </li>
+                                            </ul>
+                                    </li>
+                                    <li id="testAct">
+                                        <img id="imgswitch14" onclick="listChange('sublist14', 'imgswitch14')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                                        charting.chart.bubbleMinimumSize: number
+                                    </li>
+                                    <li id="testAct">
+                                        <img id="imgswitch15" onclick="listChange('sublist15', 'imgswitch15')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                                        charting.chart.bubbleMaximumSize: number
+                                    </li>
+                                    <li id="testAct">
+                                        <img id="imgswitch16" onclick="listChange('sublist16', 'imgswitch16')" src="{{STATIC_URL}}{{app_name}}/list_close.png"> 
+                                        resizable: true/false
+                                    </li>
+                                </p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td rowspane="1">
+                                <h4 class="tabless" href="aline">
+                                    Line Chart
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td rowspan="1">
+                                <h4 class="tabless" href="aarea">
+                                    Area Chart
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td rowspan="1">
+                                <h4 class="tabless" href="acolumn">
+                                    Column Chart
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td rowspan="1">
+                                <h4 class="tabless" href="abar">
+                                    Bar Chart
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" href="apie">
+                                    Pie Chart
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" href="ascatter">
+                                    Scatter Chart
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" href="abubble">
+                                    Bubble Chart
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" href="aradial">
+                                    Radial Gauge Chart
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" href="afiller">
+                                    Filler Gauge Chart
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" href="amarker">
+                                    Marker Gauge Chart
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" id="asingle">
+                                    Single
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" id="amap">
+                                    Map
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" id="atext">
+                                    Text
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" id="aradio">
+                                    Radio Button
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" id="adropdown">
+                                    Dropdown
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" id="acheckbox">
+                                    Checkbox
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" id="amulti">
+                                    Multi Select
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                        <tr height="200px">
+                            <td>
+                                <h4 class="tabless" id="atime">
+                                    Time Range
+                                </h4>
+                            </td>
+                            <th>
+                                <p></p>
+                            </th>
+                        </tr>
+                    </table>
+                <h2 id="package">
+                    Packaging And Splunkbase
+                </h2>
+                    <p class="tabless">
+                        For packaging an app, refer to <a class="external" href="http://docs.splunk.com/Documentation/Splunk/latest/AdvancedDev/PackageApp">this</a>.
+                    </p>
+                    <p class="tabless">
+                        <a class="external" href="https://splunkbase.splunk.com/new/">Splunkbase new app</a>
+                    </p>
+                <h2 id="splunktricks">
+                    Splunk Tricks
+                </h2>
+                <p>
+                    <div class="tabless">
+                        Ways to change the way Splunk does things.<br>
+                    </div>
+                    <br>
+                    <table width="100%">
+                        <tr>
+                            <td width="50%">
+                                <center>
+                                    <h4>
+                                        Tip/Trick
+                                    </h4>
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    <h4>
+                                        CSS, HTML, or JavaScript code<br>
+                                        With example picture below each
+                                    </h4>
+                                </center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h4><center>Changing the Splunk table colors CSS</center></h4></td>
+                            <th>
+                                // change the table header color<br>
+                                .table-chrome &#62; thead &#62; tr &#62; th &#123;<br>
+                                <div id="codetab">background: #B33FF8;</div>
+                                &#125;<br>
+                                // change the even numbered rows colors<br>
+                                .table-striped &#62; tbody &#62; tr:nth-child&#40;even&#41; &#62; td &#123;<br>
+                                <div id="codetab">background-color: #5384C7 !important;</div>
+                                &#125;<br>
+                                // change the odd numbered rows colors<br>
+                                .table-striped &#62; tbody &#62; tr:nth-child&#40;odd&#41; &#62; td &#123;<br>
+                                <div id="codetab">background-color: #5384C7 !important;</div>
+                                &#125;<br>
+                                // change the table rows text colors<br>
+                                .table-striped &#62; tbody &#62; tr &#62; td &#123;<br>
+                                <div id="codetabe">color: white;</div>
+                                &#125;
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">
+                                <center>
+                                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/basic_plain_table.png"><br>
+                                    ~~<img src="{{STATIC_URL}}{{app_name}}/list_open.png"><img src="{{STATIC_URL}}{{app_name}}/list_open.png"><img src="{{STATIC_URL}}{{app_name}}/list_open.png"><img src="{{STATIC_URL}}{{app_name}}/list_open.png"><img src="{{STATIC_URL}}{{app_name}}/list_open.png"><img src="{{STATIC_URL}}{{app_name}}/list_open.png">~~
+                                    <br>
+                                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/basic_colored_table.png">
+                                </center>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <center>
+                                    <h4>
+                                        Moving the Splunk JavaScript out of the HTML
+                                    </h4>
+                                    Copy and remove the Splunk script at the bottom of your HTML file and place in it it's own JS file.
+                                </center>
+                            </td>
+                            <th>
+                                At the top of the Javascript, replace this:<br>
+                                <br>
+                                <p>
+                                    require.config&#40;&#123;
+                                    <div id="codetab">
+                                        baseUrl: "&#123;&#123;SPLUNK_WEB_PREFIX&#125;&#125;/static/js",<br>
+                                        waitSeconds: 0 // Disable require.js load timeout
+                                    </div>
+                                    &#125;&#41;;
+                                </p>
+                                With this:<br>
+                                <br>
+                                <p>
+                                    var urlprefix = document.URL.substr&#40;0, document.URL.search&#40;"/dj"&#41;&#41;;<br>
+                                    <br>
+                                    require.config&#40;&#123;
+                                    <div id="codetab">
+                                        baseUrl: urlprefix + "/static/js",<br>
+                                        waitSeconds: 0 // Disable require.js load timeout
+                                    </div>
+                                    &#125;&#41;;
+                                </p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">
+                                <center>
+                                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/js_splunk_move.png"><br>
+                                    ~~<img src="{{STATIC_URL}}{{app_name}}/list_open.png"><img src="{{STATIC_URL}}{{app_name}}/list_open.png"><img src="{{STATIC_URL}}{{app_name}}/list_open.png"><img src="{{STATIC_URL}}{{app_name}}/list_open.png"><img src="{{STATIC_URL}}{{app_name}}/list_open.png"><img src="{{STATIC_URL}}{{app_name}}/list_open.png">~~
+                                    <br>
+                                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/js_new_splunk_move.png">
+                                </center>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <th><!--
+                                <div class="docs-example" style="height: 300px;">
+                                    <div class="dropdown-menu dropdown-menu-selectable open" style="top: 30px;">
+                                        <div class="arrow"></div>
+                                        <ul>
+                                            <li>
+                                                <a class="" href="#" data-value="line">
+                                                    <i class="icon-check" style="display: none;"></i><i class="icon-chart-line icon-large"></i>Line
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="#" data-value="area">
+                                                    <i class="icon-check" style="display: none;"></i><i class="icon-chart-area icon-large"></i>Area
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="#" data-value="column">
+                                                    <i class="icon-check" style="display: inline;"></i><i class="icon-chart-column icon-large"></i>Column
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="#" data-value="bar">
+                                                    <i class="icon-check" style="display: none;"></i><i class="icon-chart-bar icon-large"></i>Bar
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="#" data-value="pie">
+                                                    <i class="icon-check" style="display: none;"></i><i class="icon-chart-pie icon-large"></i>Pie
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="#" data-value="scatter">
+                                                    <i class="icon-check" style="display: none;"></i><i class="icon-chart-scatter icon-large"></i>Scatter
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="#" data-value="single">
+                                                    <i class="icon-check" style="display: none;"></i><i class="icon-single-value icon-large"></i>Single Value
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="#" data-value="radialGauge">
+                                                    <i class="icon-check" style="display: none;"></i><i class="icon-gauge-radial icon-large"></i>Radial
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="#" data-value="fillerGauge">
+                                                    <i class="icon-check" style="display: none;"></i><i class="icon-gauge-filler icon-large"></i>Filler
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="#" data-value="markerGauge">
+                                                    <i class="icon-check" style="display: none;"></i><i class="icon-gauge-marker icon-large"></i>Marker
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="#" data-value="markerGauge">
+                                                    <i class="icon-check" style="display: none;"></i><i class="icon-gauge-marker icon-large"></i>Marker
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="#" data-value="markerGauge">
+                                                    <i class="icon-check" style="display: none;"></i><i class="icon-gauge-marker icon-large"></i>Marker
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="#" data-value="markerGauge">
+                                                    <i class="icon-check" style="display: none;"></i><i class="icon-gauge-marker icon-large"></i>Marker
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>-->
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="2"></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <center>
+                                    <h4>
+                                        Fun with icons
+                                    </h4>
+                                    Splunk has a bunch of icons within it that you can use, these are just a few examples of the many that there are.<br>
+                                    These are CSS class names.
+                                </center>
+                            </td>
+                            <th style="padding-top: 20px">
+                                <div class="unit size1of2">
+                                    <ul class="the-icons">
+                                        <li class="icon-cloud">icon-cloud</li>
+                                        <li class="icon-user">icon-user</li>
+                                        <li class="icon-paintbrush">icon-paintbrush</li>
+                                        <li class="icon-info">icon-info</li>
+                                    </ul>
+                                </div>
+                                <div class="unit size1of2 lastUnit">
+                                    <ul class="the-icons">
+                                        <li class="icon-lightning">icon-lightning</li>
+                                        <li class="icon-circle">icon-circle</li>
+                                        <li class="icon-text">icon-text</li>
+                                        <li class="icon-pencil">icon-pencil</li>
+                                    </ul>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="2"></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>
+                                    
+                                </h4>
+                            </td>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th colspan="2"></th>
+                        </tr>
+                    </table>
+                </p>
+                <h2 id="template">
+                    Template app
+                </h2>
+                <p class="tab">
+                    In the <b>$SPLUNK_HOME/etc/apps/testboard/examples/</b> folder, there is a <b>template_app.spl</b> file, upload that to your Splunk application for an example template app.<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/example_template.png"><br>
+                    <br>
+                    The template app will contain examples of what's provided on this page.
+                </p>
+                <h2 id="???">
+                    ???
+                </h2>
+                <p></p>
+                <h2 id="questions">
+                    Questions, Comments, Feedback
+                </h2>
+                <p></p>
+            </div>
+        <div class="bottom"></div>
+    </div>
+</div>
+<div class="footer"></div>
+</body>
+</html>

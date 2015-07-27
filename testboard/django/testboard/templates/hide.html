@@ -1,0 +1,203 @@
+{% extends "splunkdj:base_with_account_bar.html" %}
+
+{% load splunkmvc %}
+
+{% block title %}{{app_name}} Home Page{% endblock title %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/custom.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}splunkjs/css/dashboard.css">
+
+    <style>
+        .main-area {
+            margin: 0px auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding: 30px;
+            width: 1200px;
+            background-color: #34956B;
+            text-align: center;
+        }
+        .dashboard-body {
+            margin-top: 0px;
+            background-color: #7CC143;
+        }
+        .upper {
+            padding: 10px;
+            background-color: #34956B;
+            width: 600px;
+        }
+        #leftside {
+            background-color: #7CC143;
+            padding: 10px;
+            width: 600px;
+            height: 200px;
+        }
+        .bottom {
+            width: 1px;
+            height: 1px;
+        }
+        .temp {
+            border-color: #55A5C8;
+            border-style: solid;
+            border-width: 1px;
+            background-color: #ffffff;
+            position: fixed;
+            padding: 10px;
+            height: 80%;
+            left: 0;
+            top: 10%;
+            width: 10%;
+            text-indent: 0%;
+            color: black;
+            white-space: default;
+            overflow: default;
+        }
+        .temp:hover {
+            width: 10%;
+        }
+        svg>rect {
+            fill: #34956B !important;
+        }
+        svg text { 
+            fill: #7CC143 !important; 
+        }
+        .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th { 
+            background-image: linear-gradient(to bottom, #34956B, #34956B) !important;
+        }
+        .table .table, .table-striped>tbody>tr>td {
+            color: black;
+        }
+        .table .table, .table-striped>tbody>tr:nth-child(even)>td {
+            background-color: #34956B !important;
+        }
+        .table-chrome > thead > tr > th {
+            background-image: linear-gradient(to bottom, #34956B, #34956B);
+            color: #34956B !important;
+            text-shadow: none;
+        }
+        .table-chrome > thead > tr > th:hover {
+            background-image: linear-gradient(to bottom, #fff, #34956B, #34956B, #fff) !important;
+            color: #34956B !important;
+            text-shadow: none;
+        }
+        .table-chrome .sorts a {
+            text-decoration: none;
+            color: black;
+        }
+        .highlighted td {
+            background: gray !important;
+        }
+    </style>
+{% endblock css %}
+
+{% block content %}
+
+    <div class="dashboard-body">
+        <div class="bottom"></div>
+        <div id="main" class="main-area">
+            <table>
+                <tr>
+                    <td width="600px">
+                        <div id="leftside">ksdmflaksmdflaksmdflaksmdflkasmdflkasmdflksmaflk</div>
+                        &nbsp;
+                        <div class="upper" align="left">
+                            {% table id="table_searchresults" managerid="search_resulttable" %}
+                            {% chart id="chart_sourcetype" managerid="search_chart" type="pie" drilldown="none" %}
+                        </div>
+                    </td>
+                    <td width="600px">
+                        <h3><font color="#fff">Top Artist Searches</font></h3>
+                        {% chart id="chart-top-artist-searches" managerid="search-top-artist-searches" type="bar" %}
+                        <h3><font color="#000">Top Song Downloads</font></h3>
+                        {% chart id="table-top-song-downloads" managerid="search-top-song-downloads" type="pie" %}
+                        <h3><font color="#555">Top Artist Downloads</font></h3>
+                        {% chart id="chart-top-artist-downloads" managerid="search-top-artist-downloads" type="column" %}
+                    </td>
+                </tr>
+            </table>
+            <div class="bottom"></div>
+        <div id="temp" class="temp" align="left"><div style="width: 50px">{% dropdown id="drop_headcount" default="1" value="$headcount$"|token_safe showClearButton=False %}
+                            {% radiogroup id="radio_sourcetype" managerid="search_sourcetypes" labelField="sourcetype" valueField="sourcetype" value="$sourcetype$"|token_safe default="splunkd" %}</div>
+                            <button type="button" onclick="myFunction()">Try it</button>
+                            <p id="demo">A Paragraph</p>
+                            <input type="text" name="txtJob" id="txtJob" value="#34956B" style="width: 50px;">
+                            <button type="button" onclick="colorChange()">Change</button>
+                            <select id="dropdown" style="width: 90%">
+                              <option value="one">1</option>
+                              <option value="two">2</option>
+                              <option value="three">3</option>
+                              <option value="four">4</option>
+                            </select>
+        </div>
+    </div>
+
+{% endblock content%}
+
+{% block managers %}
+    {% searchmanager id="search-top-artist-searches"
+        search='| inputlookup musicdata.csv | search bc_uri=/browse/search/* | top search_terms | fields - percent | rex field=search_terms mode=sed "s/\+/ /g"'
+        cache=True
+    %}
+    {% searchmanager id="search-top-song-downloads"
+        search="| inputlookup musicdata.csv | search bc_uri=/sync/addtolibrary* | stats count by track_name | sort count desc | table track_name count"
+        cache=True
+    %}
+    {% searchmanager id="search-top-artist-downloads"
+        search="| inputlookup musicdata.csv | search bc_uri=/sync/addtolibrary* | timechart useother=f usenull=f span=20s count by artist_name"
+        cache=True
+    %}
+    {% searchmanager id="search_resulttable" search="index=_internal sourcetype=$sourcetype$ | head $headcount$"|token_safe cache=True
+    %}
+    {% searchmanager id="search_chart" search="index=_internal | head 1000 | stats count by sourcetype" cache=True
+    %}
+    {% searchmanager id="search_sourcetypes" search="index=_internal | head 1000 | top sourcetype" cache=True
+    %}
+{% endblock managers %}
+
+{% block js %}    
+
+    <script>
+        var openSide = true;
+        // Load the required libraries--in this case, the SplunkJS Stack and radio buttons
+        var deps = [
+            "splunkjs/ready!",
+            "splunkjs/mvc/radiogroupview"
+        ];
+        require(deps, function(mvc) {
+            // Define a dictionary of choices for the dropdown list
+            var choices_headcount = [
+                {label:"1", value: "1"},
+                {label:"2", value: "2"},
+                {label:"3", value: "3"},
+                {label:"4", value: "4"},
+                {label:"5", value: "5"}
+            ];
+            // Set the choices into the dropdown list
+            splunkjs.mvc.Components.getInstance("drop_headcount").settings.set("choices", choices_headcount);
+        });
+        require(function switchVar() {
+            if (city1 == "Dalas and San Francisco") {
+                city1 = "New York";
+            } else {
+                city1 = "Dalas and San Francisco";
+            }
+        })
+        function myFunction() {
+            if (openSide) {
+                //document.getElementById("demo").innerHTML = document.URL;
+                var temp = document.URL.replace("home", "trying", [], false);
+                window.open(temp);
+                openSide = false;
+            } else {
+                document.getElementById("demo").innerHTML = "Back to normal.";
+                openSide = true;
+            }
+        }
+        function colorChange() {
+            document.getElementById("main").style.backgroundColor = document.getElementsByName('txtJob')[0].value;
+            document.getElementById("temp").style.backgroundColor = document.getElementsByName('txtJob')[0].value;
+        }
+    </script>
+
+{% endblock js %}

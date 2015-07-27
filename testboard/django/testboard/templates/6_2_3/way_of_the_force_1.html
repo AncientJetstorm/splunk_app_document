@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>App The Padawan</title>
+    <link rel="shortcut icon" href="{{SPLUNKWEB_URL_PREFIX}}/static/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/pages/dashboard-simple-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/app/search/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/custom.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/override.css" />
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/config?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/i18n.js"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/i18ncatalog?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/build/simplexml.min/config.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_javascript.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_splunk.js"></script>
+    <!--[if IE 7]><link rel="stylesheet" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/sprites-ie7.css" /><![endif]-->
+</head>
+<body class="simplexml preload">
+
+<!-- 
+BEGIN LAYOUT
+This section contains the layout for the dashboard. Splunk uses proprietary
+styles in <div> tags, similar to Bootstrap's grid system. 
+-->
+<a class="navSkip" href="#navSkip" tabindex="1">Screen reader users, click here to skip the navigation bar</a>
+<div class="header">
+    <div id="placeholder-splunk-bar">
+        <a href="{{SPLUNKWEB_URL_PREFIX}}/app/launcher/home" class="brand" title="splunk > listen to your data">Luke i am your faja</a>
+    </div>
+    <div id="placeholder-app-bar"></div>
+</div>
+<a id="navSkip"></a>
+    <div class="dashboard-body">
+        <div id="main" class="main-area">
+            <h1 align="center">Step 1: The Padawan</h1>
+            <div id="content">
+                <h2 id="content_index">Content</h2>
+                <p>
+                    <li><a href="#overview">Creating Your Lightsaber</a></li>
+                    <li><a href="#preasset">Examining The Layout</a></li>
+                    <li><a href="#gettingstarted">More On Layout</a></li>
+                    <li><a href="#next">Next Step</a></li>
+                </p>
+                <h2 id="overview">Creating Your Lightsaber</h2>
+                <p>Let us begin your journey into the world of Splunk app development.<br>
+                    Let's start with opening up the terminal, if you haven't already done that anyway. Next <code>cd</code> to your Splunk home.<br>
+                    For Mac users, the Splunk home is normally under your Applications folder at a system level.<br>
+                    For Windows users, the Splunk home is generally under your Program Files.<br>
+                    From there <code>cd</code> into the etc folder, into the app folder, then into the framework folder <code>cd etc/apps/framework/</code><br>
+                    Next, run <code>./splunkdj createapp app_name</code> and replace the app_name with the name of your choosing. It should ask for your Splunk username and password, this is the password used to log into the application. It should print out with this: <br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/terminal_createapp.png"><br>
+                    <br>
+                    This uses the Splunk web framework to create an app with the very bare minimum, somewhat less and different then bare_bones creation inside Splunk. Restart Splunk and move to the next area below.</p>
+                <h2 id="preasset">Examining The Layout</h2>
+                <p>First let's get back into Splunk and look at our app that we just created. Log back into Splunk and look for your app on the left of the screen. It should just look pretty plain, dull and grey/gray, with a bubble image above the name. Don't worry though, we'll change that later to make it look all nice and pretty. <br>
+                    For now though, click on your app and you should see this: <br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/home_page.png"><br>
+                    <br>
+                    Now, from here you can see that there isn't really much of anything at all to look at. <br>
+                    Real quick, be sure to grab this <b>musicdata.csv</b> file <a href="https://raw.github.com/splunk/splunk-demo-musicdashboard/master/musicdashboard/splunkd/lookups/musicdata.csv">from here</a> as we will be using it some. <br>
+                    Let's go head to our Splunk application folder and find our app, to look at how it's setup. <br>
+                    Now head into the <b>$SPLUNK_HOME/etc/apps/</b> folder and find your app folder, inside <b>$SPLUNK_HOME/etc/apps/app_name/</b> create a folder called lookups and place the musicdata.csv file in there.<br>
+                    Go back to your app's folder and into the <b>$SPLUNK_HOME/etc/app/app_name/django/app_name/templates/</b> folder, open the <b>home.html</b> file, in the text editor of your choosing.<br>
+                    This file is currently divided into three sections that Splunk reads that you can edit, there is one other as well.
+
+                    <ul>
+                        <li>The CSS block: <b>&#123;&#37; block css &#37;&#125;</b> which defines css within the block</li>
+                        <li>The HTML block, or content block: <b>&#123;&#37; block content &#37;&#125;</b> which is where the HTML goes and defines the "Splunk views"</li>
+                        <li>The managers block: <b>&#123;&#37; block manager &#37;&#125;</b> which defines the "seach managers"</li>
+                        <li>The JavaScript block: <b>&#123;&#37; block js &#37;&#125;</b> which defines javascript with the block for interaction</li>
+                    </ul>
+
+                From here let's talk about what is currently happening in this file.<br>
+                <br>
+                <img class="myImg" src="{{STATIC_URL}}{{app_name}}/home_html.png"><br>
+                <br>
+                Note: I am using Sublime Text 2, so my view may look slightly different then yours, if you're using a different editor.<br>
+                <br>
+                Let's look at the <b>&#123;&#37; block css &#37;&#125;</b> first. Your <b>home.html</b> is currently linking to a document called <b>custom.css</b>, this file is under the <b>$SPLUNK_HOME/etc/apps/app_name/django/app_name/static/app_name/</b> folder.<br>
+                You are able to use css within this file, because Splunk is able to read them seperately through Django, but if you have multiple files like this using the same css then it'd be best to create one css file and just link it here. Next, in the <code>&#60;style&#62;</code> tags, there is a css class called <b>main-area</b> which is just defining a small box area.<br>
+                <br>
+                Within the <b>&#123;&#37; block content &#37;&#125;</b> there is two <code>&#60;div&#62;</code> tags, with one attached to the <b>main-area</b> class which makes everything in between it part of that.<br>
+                In between the first <code>&#60;p&#62;</code> tag, there is a <code>&#123;&#123;message&#125;&#125;</code> piece that's just coming from nowhere. Actually, it's being pulled from the <b>views.py</b> Python file in the <b>$SPLUNK_HOME/etc/apps/app_name/django/app_name/</b> folder. You won't have to worry about this file though, we won't be using it.<br>
+                The next <code>&#60;p&#62;</code> tag is attached to the <b>muted</b> class, which is not located inside this file. Splunk has it's own set of default CSS files, to see what CSS you are able to write over for your app, look at the <b>default.css</b> file under the <b>$SPLUNK_HOME/share/splunk/search_mrsparkle/exposed/css/skins/default/</b> folder.<br>
+                To change one of these, simply add the one you want to change to your CSS and alter it.<br>
+                Now to look at the <b>&#123;&#37; block js &#37;&#125;</b> area, which is for the JavaScript to be placed. Inside the <code>&#60;script&#62;</code> tag, is where the javascript is currently spitting out a sentence to the console. It's not really doing much of anything right now, but we'll change that later.
+                </p>
+                <h2 id="gettingstarted">More On Layout</h2>
+                <p>You may skip this section if you wish, it will just be explaining some of the other files and what they do, but we will not actually be using them.</p>
+                <h2 id="next">Next Step</h2>
+                <li><a onclick="switchPage('way_of_the_force_2', 'way_of_the_force_1')">Step 2: Early Training</a></li>
+            </div>
+        <div class="bottom"></div>
+    </div>
+</div>
+<div class="footer"></div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+<view template="testboard:/templates/redirect.tmpl" isVisible="true"><label>Home</label></view>

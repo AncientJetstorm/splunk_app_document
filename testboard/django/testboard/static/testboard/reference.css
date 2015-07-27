@@ -1,0 +1,6 @@
+#navlist {
+	display: inline-block;
+}
+
+#active:hover li { display: block; }
+#active li { display: none; }

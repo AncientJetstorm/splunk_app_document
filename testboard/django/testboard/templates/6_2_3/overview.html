@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>App 6.2.3 overview</title>
+    <link rel="shortcut icon" href="{{SPLUNKWEB_URL_PREFIX}}/static/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/pages/dashboard-simple-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/app/search/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/custom.css" />
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/config?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/i18n.js"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/i18ncatalog?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/build/simplexml.min/config.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_javascript.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_splunk.js"></script>
+    <!--[if IE 7]><link rel="stylesheet" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/sprites-ie7.css" /><![endif]-->
+</head>
+<body class="simplexml preload">
+
+<!-- 
+BEGIN LAYOUT
+This section contains the layout for the dashboard. Splunk uses proprietary
+styles in <div> tags, similar to Bootstrap's grid system. 
+-->
+<a class="navSkip" href="#navSkip" tabindex="1">Screen reader users, click here to skip the navigation bar</a>
+<div class="header">
+    <div id="placeholder-splunk-bar">
+        <a href="{{SPLUNKWEB_URL_PREFIX}}/app/launcher/home" class="brand" title="splunk > listen to your data">Why are you looking here?</a>
+    </div>
+    <div id="placeholder-app-bar"></div>
+</div>
+<a id="navSkip"></a>
+    <div class="dashboard-body">
+        <div id="main" class="main-area">
+            <h1 align="center">Overview</h1>
+            <div id="content">
+                <h2 id="content_index">Content</h2>
+                <p>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#preasset">Pre-Assets</a></li>
+                    <li><a href="#gettingstarted">Getting Started</a></li>
+                </p>
+                <h2 id="overview">Overview</h2>
+                <p>6.2.3 App development and refrence guide</p>
+                <h2 id="preasset">Pre-Assets</h2>
+                <p></p>
+                <h2 id="gettingstarted">Getting Started</h2>
+                <p>Determine (or just pick randomly) which way you would like to go through.</p>
+                <p style="font-size: 8px">Disclaimer! Reminder that these are temporary things(names) and will be changed.</p>
+                <li><a onclick="switchPage('way_of_the_force', 'overview')">Way Of The Force</a></li>
+                <li><a onclick="switchPage('way_of_the_forge', 'overview')">Way Of The Forge</a></li>
+            </div>
+        <div class="bottom"></div>
+    </div>
+</div>
+<div class="footer"></div>
+</body>
+</html>

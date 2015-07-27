@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Way of The Forge</title>
+    <link rel="shortcut icon" href="{{SPLUNKWEB_URL_PREFIX}}/static/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/pages/dashboard-simple-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/app/search/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/custom.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/override.css" />
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/config?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/i18n.js"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/i18ncatalog?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/build/simplexml.min/config.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_javascript.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_splunk.js"></script>
+    <!--[if IE 7]><link rel="stylesheet" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/sprites-ie7.css" /><![endif]-->
+</head>
+<body class="simplexml preload">
+
+<!-- 
+BEGIN LAYOUT
+This section contains the layout for the dashboard. Splunk uses proprietary
+styles in <div> tags, similar to Bootstrap's grid system. 
+-->
+<a class="navSkip" href="#navSkip" tabindex="1">Screen reader users, click here to skip the navigation bar</a>
+<div class="header">
+    <div id="placeholder-splunk-bar">
+        <a href="{{SPLUNKWEB_URL_PREFIX}}/app/launcher/home" class="brand" title="splunk > listen to your data">Can't see me</a>
+    </div>
+    <div id="placeholder-app-bar"></div>
+</div>
+<a id="navSkip"></a>
+    <div class="dashboard-body">
+        <div id="main" class="main-area">
+            <h1 align="center">Step 1: The Steel</h1>
+            <div id="content">
+                <h2 id="content_index">Content</h2>
+                <p>
+                    <li><a href="#overview">Chunk Of Steel</a></li>
+                    <li><a href="#preasset">Examining The Layout</a></li>
+                    <li><a href="#gettingstarted">More On Layout</a></li>
+                    <li><a href="#next">Next Step</a></li>
+                </p>
+                <h2 id="overview">Chunk of Steel</h2>
+                <p>Let us begin your journey into the world of Splunk app development.<br>
+                    Let's start with opening up the terminal, if you haven't already done that anyway. Next <code>cd</code> to your Splunk home.<br>
+                    For Mac users, the Splunk home is normally under your Applications folder at a system level.<br>
+                    For Windows users, the Splunk home is generally under your Program Files.<br>
+                    From there <code>cd</code> into the etc folder, into the app folder, then into the framework folder <code>cd etc/apps/framework/</code><br>
+                    Next, run <code>./splunkdj createapp app_name</code> and replace the app_name with the name of your choosing. It should ask for your Splunk username and password, this is the password used to log into the application. It should print out with this: <br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/terminal_createapp.png"><<br>
+                    <br>
+                    This uses the Splunk web framework to create an app with the very bare minimum, somewhat less and different then bare_bones creation inside Splunk. Restart Splunk and move to the next area below.</p>
+                <h2 id="preasset">Examining The Layout</h2>
+                <p>First let's get back into Splunk and look at our app that we just created. Log back into Splunk and look for your app on the left of the screen. It should just look pretty plain, dull and grey/gray, with a bubble image above the name. Don't worry though, we'll change that later to make it look all nice and pretty. <br>
+                    For now though, click on your app and you should see this: <br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/home_page.png"><br>
+                    <br>
+                    Now, from here you can see that there isn't really much of anything at all to look at. <br>
+                    Real quick, be sure to copy the contents from <a href="https://raw.github.com/splunk/splunk-demo-musicdashboard/master/musicdashboard/splunkd/lookups/musicdata.csv">this</a> and save it as <b>musicdata.csv</b> file since we will be using it some. <br>
+                    Now head into the <b>$SPLUNK_HOME/etc/apps/</b> folder and find your app folder, inside <b>$SPLUNK_HOME/etc/apps/app_name/</b> create a folder called lookups and place the musicdata.csv file in there.<br>
+                    Let's go change the CSS file for our homepage some, head to the <b>$SPLUNK_HOME/etc/app/app_name/django/app_name/static/app_name/</b> folder and open the <b>custom.css</b> file.<br>
+                    Replace the <code>.main-area</code> class with this:<br>
+                    <div class="code">
+                        .main-area &#123;<br>
+                            <div id="codetab">border: solid;<br></div>
+                            <div id="codetab">border-width: 1px;<br></div>
+                            <div id="codetab">margin: 30px auto;<br></div>
+                            <div id="codetab">padding: 10px;<br></div>
+                            <div id="codetab">width: 300px;<br></div>
+                        &#125;<br>
+                    </div>
+                    <br>
+                    We went in and changed the <code>.main-area</code> class, because we will be replacing the <b>home.html</b> file with one that has a different layout.<br>
+                    Next let's head into this app's folder and grab a new homepage layout, locate the <b>home.html</b> file in the <b>$SPLUNK_HOME/etc/apps/testboard/examples/</b> folder then copy and replace the <b>home.html</b> file in your <b>$SPLUNK_HOME/etc/apps/app_name/django/app_name/templates/</b> folder.<br>
+                    Refresh the home page(you may have to restart Splunk) and it should look like this:<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/new_home.png"><br>
+                    <br>
+                    It doesn't look like we really changed much, besides adding the navigation bar at the top, but the <b>home.html</b> file has been changed a ton. Let's open up the <b>home.html</b> file in a text editor and see what it looks like, head to the <b>$SPLUNK_HOME/etc/apps/app_name/django/app_name/templates/</b> folder and open the file.<br>
+                    At the top in the <code>&#60;head&#62;</code> tag, you can see the list of CSS and JavaScript files that are being used. After that you can see the Splunk header and navigation bar being setup at the start of the <code>&#60;body&#62;</code> tag. The next part is where we will organize the layout of our app home, then after that is the Splunk footer and a JavaScript script.
+                </p>
+                <h2 id="gettingstarted">More On Layout</h2>
+                <p>You may skip this section if you wish, it will just be explaining some of the other files and what they do, but we will not actually be using them.</p>
+                <h2 id="next">Next Step</h2>
+                <li><a onclick="switchPage('way_of_the_forge_2', 'way_of_the_forge_1')">Step 2: Using Flames</a></li>
+            </div>
+        <div class="bottom"></div>
+    </div>
+</div>
+<div class="footer"></div>
+</body>
+</html>

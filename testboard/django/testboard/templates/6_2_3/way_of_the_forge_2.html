@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Way of The Forge</title>
+    <link rel="shortcut icon" href="{{SPLUNKWEB_URL_PREFIX}}/static/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/build/pages/dashboard-simple-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{SPLUNKWEB_URL_PREFIX}}/static/app/search/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/custom.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/override.css" />
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/config?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/i18n.js"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/i18ncatalog?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/build/simplexml.min/config.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_javascript.js"></script>
+    <script src="{{STATIC_URL}}{{app_name}}/required_splunk.js"></script>
+    <!--[if IE 7]><link rel="stylesheet" href="{{SPLUNKWEB_URL_PREFIX}}/static/css/sprites-ie7.css" /><![endif]-->
+</head>
+<body class="simplexml preload">
+
+<!-- 
+BEGIN LAYOUT
+This section contains the layout for the dashboard. Splunk uses proprietary
+styles in <div> tags, similar to Bootstrap's grid system. 
+-->
+<a class="navSkip" href="#navSkip" tabindex="1">Screen reader users, click here to skip the navigation bar</a>
+<div class="header">
+    <div id="placeholder-splunk-bar">
+        <a href="{{SPLUNKWEB_URL_PREFIX}}/app/launcher/home" class="brand" title="splunk > listen to your data">Click Me! Please?</a>
+    </div>
+    <div id="placeholder-app-bar"></div>
+</div>
+<a id="navSkip"></a>
+    <div class="dashboard-body">
+        <div id="main" class="main-area">
+            <h1 align="center">Step 2: Using Flames</h1>
+            <div id="content">
+                <h2 id="content_index">Content</h2>
+                <p>
+                    <li><a href="#makeaspark">Make A Spark</a></li>
+                    <li><a href="#overview">Bad Fire</a></li>
+                    <li><a href="#hammer">Onto The Hammer</a></li>
+                </p>
+                <h2 id="makeaspark">Make A Spark</h2>
+                <p>Let's change up the homepage of your app some, open up the <b>default.xml</b> file under the <b>$SPLUNK_HOME/etc/apps/app_name/default/data/ui/nav/</b> folder.<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/default_xml.png"><br>
+                    <br>
+                    The <b>default.xml</b> file helps set your homepage and edit the navigation bar. You can set your homepage to be the default Splunk search view, by adding <code>search_view="search"</code> as an attribute to the <code>&#60;nav&#62;</code> tag. Then add <code>&#60;view name="search" default="true" &#47;&#62;</code> on the next line and remove the <code>default="true"</code> from the <code>&#60;view name="default" default="true"&#47;&#62;</code> line.<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/new_default_xml.png"><br>
+                    <br>
+                    Now restart Splunk and go to your app, it should now look like this:<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/search_home.png"><br>
+                    <br>
+                    The nav bar is grey/gray by default, so before we change our <b>default.xml</b> file back to normal, let's change the color/colour, this will change the color/colour of the nav bar and the color/colour of your app on the Splunk application homepage. Let's change it to a soft red for now, you can change it to the color/colour you prefer, add <code>color="#AA3939"</code> as an attribute to the <code>&#60;nav search_view="search"&#62;</code> tag and restart Splunk.<br>You should see the nav bar is now your color/colour, for this though we don't need the search page, so let's revert all the changes in our <b>default.xml</b> file.<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/final_default_xml.png"><br>
+                    <br>
+                    Note: I left the <code>color="AA3939"</code> attribute, it is your choice to leave it or not.<br>
+                    <br>
+                </p>
+                <h2 id="overview">Bad Fire</h2>
+                <p>Let's change the <b>custom.css</b> file some more before we start changing the <b>home.html</b> file.<br>
+                    Open the <b>custom.css</b> file in the <b>$SPLUNK_HOME/etc/apps/app_name/django/app_name/static/app_name/</b> folder, then alter/add the following:
+                    <div class="code">
+                        <div id="codetab">padding: 30px;<br></div>
+                        <div id="codetab">width: 1100px;<br></div>
+                        <div id="codetab">background-color: white;<br></div>
+                    </div>
+                    <br>
+                    If you refresh the page, you can see that we just expanded the box and turned the background white.<br>
+                    Go back to the <b>home.html</b> file and see we'll start editing that next. Let's delete the two lines between the <code>&#60;div class="main-area"&#62;</code> tags, next add a table with two column and one row inside the tags:<br>
+                    <br>
+                    <div class="code">
+                        &#60;table width="100%"&#62;<br>
+                            <div id="codetab">&#60;tr&#62;<br></div>
+                                <div id="codetab2">&#60;td width="50%"&#62;<br></div>
+                                    <div id="codetab3"><br></div>
+                                <div id="codetab2">&#60;/td&#62;<br></div>
+                                <div id="codetab2">&#60;td width="50%"&#62;<br></div>
+                                    <div id="codetab3"><br></div>
+                                <div id="codetab2">&#60;/td&#62;<br></div>
+                            <div id="codetab">&#60;/tr&#62;<br></div>
+                        &#60;/table&#62;<br>
+                    </div><br>
+
+                    We are going to be adding some elements to display some statistics from the <b>musicdata.csv</b> file that was created earlier.<br>
+                    We'll start with a pie chart in the first column, then a table in the next. To do this, we need to create two search managers and two elements.<br>
+                    Scroll down to the <b>// SEARCH MANAGERS</b> section and add the following underneath:<br>
+                    <br>
+                    <div class="code">
+                        // Pie chart search manager/query<br>
+                        var search1 = new SearchManager&#40;&#123;<br>
+                        <div id="codetab">"id": "search1",<br></div>
+                        <div id="codetab">"search": "| inputlookup musicdata.csv | search eventtype=* | stats count by eventtype | head 5",<br></div>
+                        <div id="codetab">"cancelOnUnload": true,<br></div>
+                        <div id="codetab">"status_buckets": 0,<br></div>
+                        <div id="codetab">"app": utils.getCurrentApp&#40;&#41;,<br></div>
+                        <div id="codetab">"preview": true,<br></div>
+                        <div id="codetab">"runWhenTimeIsUndefined": false<br></div>
+                        &#125;, &#123;tokens: true, tokenNamespace: "submitted"&#125;&#41;;<br>
+                    </div>
+                    <br>
+                    Next scroll to the <b>// VIEWS: VISUALIZATION ELEMENTS</b> section then place this below:<br>
+                    <br>
+                    <div class="code">
+                        // Pie chart visualization element<br>
+                        var element1 = new ChartElement&#40;&#123;<br>
+                        <div id="codetab">"id": "element1",<br></div>
+                        <div id="codetab">"charting.chart": "pie",<br></div>
+                        <div id="codetab">"resizable": false,<br></div>
+                        <div id="codetab">"managerid": "search1",<br></div>
+                        <div id="codetab">"el": $&#40;'#element1'&#41;<br></div>
+                        &#125;, &#123;tokens: true, tokenNamespace: "submitted"&#125;&#41;.render&#40;&#41;;<br>
+                    </div>
+                    <br>
+                    Head back up to where your table is and between the first set of <code>&#60;td&#62;</code> tags, we're gonna add this:<br>
+                    <br>
+                    <div class="code">
+                        &#60;div id="element1" class="dashboard-element chart" style="width: 100%"&#62;<br>
+                            <div id="codetab">&#60;div class="panel-body"&#62;&#60;/div&#62;<br></div>
+                        &#60;/div&#62;<br>
+                    </div>
+                    <br>
+                    Now let's refresh the page and look at the pie chart.<br>
+                    <br>
+                    <img class="myImg" src="{{STATIC_URL}}{{app_name}}/home_pie.png"><br>
+                    <br>
+
+                </p>
+                <h2 id="hammer">Onto The Hammer</h2>
+                    <br>
+                    <a onclick="switchPage('way_of_the_forge_3', 'way_of_the_forge_2')">Step 3: Hammer Time</a>
+            </div>
+        <div class="bottom"></div>
+    </div>
+</div>
+<div class="footer"></div>
+</body>
+</html>
